@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="hire.contact.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="screen">
+                <div class="screen-header">
+                    <div class="screen-header-left">
+                        <div class="screen-header-button close"></div>
+                        <div class="screen-header-button maximize"></i></div>
+                        <div class="screen-header-button minimize"></i></div>
+                    </div>
+                    <div class="screen-header-right" onclick="toggleDropdown()">
+                        &middot;&middot;&middot;
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-link" onclick="toggleDarkMode()" id="dark-mode-link"> <i
+                                class="fas fa-moon"></i> Dark Mode</a>
+                        <a href="#" class="dropdown-link" onclick="toggleLightMode()" id="light-mode-link"> <i
+                                class="fas fa-sun"></i> Light Mode</a>
+                    </div>
+                </div>
+                <div class="screen-body">
+                    <div class="screen-body-item left">
+                        <div class="app-title">
+                            <span>CONTACT</span>
+                            <span>US</span>
+                        </div>
+                        <div class="app-contact">CONTACT INFO : bbhatt@gmail.com</div>
+                    </div>
+                    <div class="screen-body-item">
+                        <form name="contact-form">
+                            <div class="app-form">
+                                <div class="app-form-group">
+                                    <input type="text" class="app-form-control" placeholder="NAME" name="Name" required>
+                                </div>
+                                <div class="app-form-group">
+                                    <input type="email" class="app-form-control" placeholder="EMAIL" name="Email"
+                                        required>
+                                </div>
+                                <div class="app-form-group">
+                                    <input type="tel" class="app-form-control" placeholder="CONTACT NO"
+                                        name="Contact No.">
+                                </div>
+                                <div class="app-form-group message">
+                                    <input type="text" class="app-form-control" placeholder="MESSAGE" name="Message"
+                                        required>
+                                </div>
+                                <div class="app-form-group buttons">
+                                    <button type="reset" class="app-form-button">CANCEL</button>
+                                    <button type="submit" class="app-form-button">SEND</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="social-media-links">
+        <a href="">
+            <img class="social-svg" id="is9ym"
+                src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-mail.svg">
+        </a>
+        <a href="">
+            <img class="social-svg" id="i706n"
+                src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-twitter.svg">
+        </a>
+        <a href="index.html">
+            <img class="social-svg-main" id="ib9ve" src="https://www.svgrepo.com/show/510001/home.svg">
+        </a>
+        <a href="">
+            <img class="social-svg" id="ib9ve"
+                src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-insta.svg">
+        </a>
+        <a href="">
+            <img class="social-svg" id="ie9fx"
+                src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-fb.svg">
+        </a>
+    </div>
+    </div>
+
+</body>
+
+<script src="toggle-mode.js"></script>
+<script src="protect.js"></script>
+
+</html>
