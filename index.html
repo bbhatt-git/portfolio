@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhupesh Raj Bhatt | Neon Glass Portfolio</title>
-    <!-- Load Tailwind CSS -->
+    <!-- Load Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
+    <!-- Load Lucide Icons from CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         /* --- CORE STYLING & PALETTE --- */
         :root {
+            /* Define colors for easy JavaScript and CSS access */
             --color-primary: #00f5d4; /* Neon Cyan Accent */
             --color-secondary: #ff00ff; /* Neon Magenta (for highlights/glow) */
             --color-background: #0d001a; /* Deep Violet/Black Base */
@@ -50,7 +51,7 @@
         }
 
         .glass-btn:hover {
-            /* Neon glow effect */
+            /* Neon glow effect applied directly via CSS variables */
             box-shadow: 0 0 30px var(--color-primary), inset 0 0 15px var(--color-primary);
             transform: translateY(-4px) scale(1.02);
         }
@@ -99,7 +100,7 @@
         </div>
     </nav>
     
-    <!-- Mobile Menu Drawer (FIXED: Z-index increased to z-[60] to overlay the navbar) -->
+    <!-- Mobile Menu Drawer (z-[60] to overlay the navbar) -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/70 hidden transition-opacity duration-300 md:hidden">
         <!-- Sidebar container now uses high transparency glass-container -->
         <div class="glass-container w-4/5 h-full absolute right-0 p-8 flex flex-col space-y-6 shadow-xl rounded-l-3xl">
@@ -118,7 +119,7 @@
     <!-- Main Content Area -->
     <main class="pt-24">
         
-        <!-- 1. Home Section (Hero) - Text Visibility Fixed with Strong Contrast -->
+        <!-- 1. Home Section (Hero) -->
         <section id="home" class="min-h-[90vh] flex items-center justify-center text-center p-6 sm:p-10">
             <div class="max-w-4xl fade-in-up">
                 <!-- Welcome Text - Pure White on Dark BG -->
@@ -255,7 +256,7 @@
                     <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
                         <!-- Placeholder Image/Card Top -->
                         <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            
+                            [attachment_0](attachment)
                         </div>
                         <div class="p-8">
                             <h3 class="text-2xl font-semibold mb-2 text-white">Fluid E-commerce Store</h3>
@@ -278,4 +279,255 @@
                             <p class="text-white/70 mb-4">A high-conversion landing page utilizing subtle 3D effects and high-impact hero sections for product launch.</p>
                             <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
                                 View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewB
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right ml-2"><path d="M8 12h16"/><path d="m18 18 6-6-6-6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 5. Testimonials (Auto Revolving/Sliding) Section -->
+        <section id="testimonials" class="py-20 p-6">
+            <div class="max-w-4xl mx-auto fade-in-up">
+                <h2 class="text-5xl font-bold text-center text-white mb-16">What Clients <span style="color: var(--color-primary);">Say</span></h2>
+                
+                <div class="relative h-72 sm:h-80 overflow-hidden">
+                    <div id="testimonial-slider" class="absolute inset-0 flex items-center justify-center">
+                        <!-- Content injected by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-10 space-x-5">
+                    <!-- Buttons with Rounded-3xl and Neon Accent -->
+                    <button id="prev-btn" class="p-4 glass-container rounded-3xl hover:bg-white/30 transition-all duration-300" style="color: var(--color-primary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <button id="next-btn" class="p-4 glass-container rounded-3xl hover:bg-white/30 transition-all duration-300" style="color: var(--color-primary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 6. Contact Section -->
+        <section id="contact" class="py-20 p-6">
+            <div class="max-w-3xl mx-auto fade-in-up">
+                <h2 class="text-5xl font-bold text-center text-white mb-16">Ready to <span style="color: var(--color-primary);">Start?</span></h2>
+                
+                <!-- Form with Rounded-3xl and Enhanced Glassmorphism -->
+                <form class="glass-container p-8 sm:p-12 rounded-3xl space-y-8">
+                    <div>
+                        <label for="name" class="block text-white/90 mb-3 text-lg">Name</label>
+                        <input type="text" id="name" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="Your Full Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-white/90 mb-3 text-lg">Email</label>
+                        <input type="email" id="email" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-white/90 mb-3 text-lg">Message</label>
+                        <textarea id="message" rows="6" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="Tell me about your project, vision, and timeline..."></textarea>
+                    </div>
+                    <!-- Submit Button with Neon Primary Color -->
+                    <button type="submit" class="glass-btn w-full py-4 px-6 text-xl font-semibold rounded-3xl transition-all duration-500 text-black" style="background-color: var(--color-primary); box-shadow: 0 0 15px var(--color-primary);">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 7. Footer Section (Rounded-t-3xl) -->
+    <footer class="glass-container mt-20 p-10 rounded-t-3xl border-t border-white/10">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex justify-center space-x-8 mb-6">
+                <!-- Social Icons with Primary Color -->
+                <a href="#" class="hover:text-white transition-colors" style="color: var(--color-primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="#" class="hover:text-white transition-colors" style="color: var(--color-primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2 1.2-1.1 1.9-2.7 1.7-4.4-1.2 0-2.5-.4-3.6-1.3-1.4-1.2-2.3-3.1-2.2-5.1.7-.1 1.4-.1 2.1-.2-.5-.5-1-1.1-1.4-1.8-.7-1.3-1.1-2.8-1.2-4.3.4.1.8.2 1.3.2.7-.4 1.3-.9 1.8-1.5.5-.6.9-1.3 1.2-2.1.2-.5.3-1 .3-1.5 0-1.6-1.1-2.9-2.6-3.3 1.2.6 2.3 1.4 3.3 2.5.5.6.8 1.4 1 2.2.3.2.5.4.7.7.7.6 1.1 1.4 1.2 2.3 0 0 0 .1 0 .2.4.2.8.4 1.1.7.9.8 1.4 1.8 1.4 2.9 0 .5-.1 1-.2 1.5.4.1.8.2 1.2.2.6-.4 1.1-.9 1.5-1.5.8-1 1.3-2.1 1.5-3.3.4 1.3.7 2.6.7 4 0 .7-.1 1.4-.2 2-.1.5-.3 1-.5 1.5z"/></svg>
+                </a>
+                <a href="#" class="hover:text-white transition-colors" style="color: var(--color-primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22.31c-3.79 0-7.3-2.2-9.69-5.75-2.03-3.03-3.13-6.52-3.12-10.22 0-2.1 0-4 1.5-5.5 1.5-1.5 3.4-1.5 5.5-1.5 2.1 0 4 0 5.5 1.5 1.5 1.5 1.5 3.4 1.5 5.5 0 3.7-.6 7.2-3.1 10.2-2.3 3.5-5.9 5.7-9.7 5.7-3.8 0-7.3-2.2-9.7-5.7.4-.7 1.1-1.1 1.9-1.3 2.5-1.1 5.3-1.7 8.2-1.7 2.9 0 5.7.6 8.2 1.7 1.4.3 2.5.9 3.4 1.8.3.3.5.7.7 1.1.1.2.1.4.1.6 0 .8-.5 1.4-1.3 1.5-1.4.1-2.8.2-4.2.2z"/></svg>
+                </a>
+            </div>
+            <p class="text-sm text-white/50">
+                &copy; <span id="current-year"></span> Bhupesh Raj Bhatt. Crafted with passion, code, and high transparency.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA ---
+        const roles = ["Fullstack Developer", "UI Designer", "Graphics Designer", "Problem Solver", "Innovator"];
+        const testimonials = [
+            { quote: "The glassmorphism design brought a premium feel to our app that immediately impressed our investors. Flawless responsiveness on mobile.", name: "Alex Chen", company: "CEO, InnovateTech" },
+            { quote: "Outstanding animation work! The transitions are so smooth and polished. It elevated our brand's presence beyond expectations.", name: "Dr. Lena Khan", company: "Lead Designer, FutureCorp" },
+            { quote: "I needed a complex site that felt light and futuristic. This developer delivered exactly that, with amazing attention to detail.", name: "Marcus 'Mace' Bell", company: "Creative Director, Apex Media" },
+            { quote: "Bhupesh's ability to blend high-performance code with cutting-edge visual design is truly exceptional. Highly recommended.", name: "Sarah Jimenez", company: "CTO, CloudNine Systems" },
+            { quote: "A true master of modern web development. The adaptive layout saved us countless hours of rework across different devices.", name: "Ethan Cole", company: "Product Manager, GridLink" },
+        ];
+
+        // --- DOM ELEMENTS & INITIALIZATION ---
+        const slider = document.getElementById('testimonial-slider');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const typingTextElement = document.getElementById('typing-text');
+
+        let currentTestimonialIndex = 0;
+        
+        // Set the current year in the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- FUNCTIONS ---
+
+        // 1. Mobile Menu Logic
+        const toggleMobileMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+        };
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        closeMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu); // Close menu on link click
+        });
+
+
+        // 2. Auto Typing Effect Logic (Smoother transitions)
+        let roleIndex = 0;
+        let charIndex = 0;
+        const typingSpeed = 70;
+        const erasingSpeed = 40;
+        const delayBeforeTyping = 1800;
+        const delayBeforeErasing = 1500;
+
+        function type() {
+            const currentRole = roles[roleIndex];
+            if (charIndex < currentRole.length) {
+                typingTextElement.textContent += currentRole.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(erase, delayBeforeErasing);
+            }
+        }
+
+        function erase() {
+            const currentRole = roles[roleIndex];
+            if (charIndex > 0) {
+                typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingSpeed);
+            } else {
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(type, 800);
+            }
+        }
+
+        setTimeout(type, delayBeforeTyping);
+
+
+        // 3. Testimonial Revolving Logic (Smoother Vertical Slide)
+        function changeTestimonial(direction) {
+            const card = slider.querySelector('.testimonial-card');
+            const transitionDuration = 500; // ms
+
+            if (card) {
+                // Slide Out transition
+                card.style.transition = `transform ${transitionDuration / 1000}s cubic-bezier(0.4, 0, 0.6, 1), opacity ${transitionDuration / 1000}s ease-in`;
+                card.style.transform = `translateY(${direction > 0 ? '-70px' : '70px'})`;
+                card.style.opacity = '0';
+            }
+
+            currentTestimonialIndex = (currentTestimonialIndex + direction + testimonials.length) % testimonials.length;
+
+            // Wait for slide out, then update content and slide in
+            setTimeout(() => {
+                const t = testimonials[currentTestimonialIndex];
+                
+                // Content update (start off-screen)
+                const startY = direction > 0 ? '70px' : '-70px';
+                slider.innerHTML = `
+                    <div class="testimonial-card glass-container p-10 rounded-3xl text-center max-w-2xl w-full" 
+                         style="opacity: 0; transform: translateY(${startY});">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mx-auto mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
+                        
+                        <p class="text-xl sm:text-2xl italic text-white mb-6">${t.quote}</p>
+                        <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
+                        <p class="text-white/60 text-sm">${t.company}</p>
+                    </div>
+                `;
+
+                // Trigger slide in
+                setTimeout(() => {
+                    const newCard = slider.querySelector('.testimonial-card');
+                    newCard.style.transition = `transform ${transitionDuration / 1000}s cubic-bezier(0.23, 1, 0.32, 1), opacity ${transitionDuration / 1000}s cubic-bezier(0.23, 1, 0.32, 1)`;
+                    newCard.style.transform = 'translateY(0)';
+                    newCard.style.opacity = '1';
+                }, 10); 
+            }, card ? transitionDuration : 0);
+        }
+        
+        nextBtn.addEventListener('click', () => changeTestimonial(1));
+        prevBtn.addEventListener('click', () => changeTestimonial(-1));
+        
+        // Initial testimonial load
+        changeTestimonial(1);
+        
+        // Auto-revolve testimonials every 7 seconds (faster)
+        setInterval(() => changeTestimonial(1), 7000);
+
+
+        // 4. Scroll and Visibility Animations (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Stop observing once visible, but allow continuous observation for the typing effect's parent
+                    if (entry.target.id !== 'home') {
+                        observer.unobserve(entry.target); 
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1, 
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('section > div').forEach(el => {
+            // Apply fade-in-up to all primary containers
+            el.classList.add('fade-in-up');
+            observer.observe(el);
+        });
+
+        // 5. Navbar Sticky Shrink/Glass Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                // Deeper background color when scrolled to maintain glass effect
+                nav.style.backgroundColor = 'rgba(13, 0, 26, 0.9)'; 
+                nav.classList.add('py-2');
+                nav.classList.remove('p-4');
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'; // Base glass-container color
+                nav.classList.remove('py-2');
+                nav.classList.add('p-4');
+            }
+        });
+
+        // 6. Lucide Icon Replacement
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+
+    </script>
+</body>
+</html>
