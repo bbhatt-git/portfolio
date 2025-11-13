@@ -3,211 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SARC Academic Club - Formal Notice</title>
+    <title>Bhupesh Raj Bhatt | Neon Glass Portfolio</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        /* --- CORE STYLING & PALETTE --- */
+        :root {
+            --color-primary: #00f5d4; /* Neon Cyan Accent */
+            --color-secondary: #ff00ff; /* Neon Magenta (for highlights/glow) */
+            --color-background: #0d001a; /* Deep Violet/Black Base */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            /* Changed background to white for printing/screenshoting clarity */
-            background-color: #000; 
-            padding: 20px;
+            background-color: var(--color-background);
+            /* Complex gradient for high-contrast glass backdrop */
+            background-image: linear-gradient(135deg, #1f003b 0%, #000a20 60%, #1f003b 100%);
+            min-height: 100vh;
+            color: #ffffff; /* Pure white text for max visibility */
+            scroll-behavior: smooth;
         }
-        .letter-sheet {
-            max-width: 650px; 
-            margin: 0 auto;
-            background: #ffffff;
-            border: 1px solid #ccc;
-            padding: 40px 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            min-height: 850px;
+
+        /* --- GLASSMORHISM EFFECT (Increased Blur & Transparency) --- */
+        .glass-container {
+            /* Using white with 15% opacity for better visibility/contrast */
+            background-color: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(25px); /* Very high blur for deep glass effect */
+            -webkit-backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Clearer edge */
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5); /* Deep shadow */
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother transitions */
         }
-        .nepali-font {
-            font-family: Arial, "Noto Sans Devanagari", sans-serif;
-            line-height: 1.8;
-            font-size: 16px;
+
+        /* --- UI & ANIMATION ENHANCEMENTS --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .header-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 2px solid #1e40af; /* Formal dark blue line */
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .header-text {
-            text-align: center;
-            margin-left: 15px;
+
+        .glass-btn:hover {
+            /* Neon glow effect */
+            box-shadow: 0 0 30px var(--color-primary), inset 0 0 15px var(--color-primary);
+            transform: translateY(-4px) scale(1.02);
         }
-        .header-text h1 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1e40af; 
-            line-height: 1.2;
+        
+        .blinking-cursor {
+            opacity: 1;
+            animation: blink 0.7s step-end infinite;
+            font-weight: 900;
         }
-        .header-text p {
-            font-size: 14px;
-            color: #4b5563;
+        @keyframes blink {
+            50% { opacity: 0; }
         }
-        .date-only {
-            text-align: right;
-            margin-bottom: 30px;
-            font-size: 15px;
-            color: #374151;
+
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary); 
+            border-radius: 10px;
         }
-        .agenda-list {
-            list-style-type: none;
-            padding: 0;
-            margin-left: 20px;
-            border: 1px solid #e5e7eb;
-            padding: 15px;
-            border-radius: 4px;
-            background-color: #f9fafb;
-        }
-        .agenda-list li {
-            position: relative;
-            margin-bottom: 10px;
-            padding-left: 20px;
-        }
-        .agenda-list li::before {
-            content: "•"; 
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #3b82f6;
-            font-size: 1.2em;
-            line-height: 1.5;
-        }
-        .signature-area {
-            margin-top: 80px; /* Reduced margin slightly to bring signatures up */
-            display: flex;
-            justify-content: space-between; /* Space out President and Secretary */
-            padding-top: 20px;
-        }
-        .signature-block {
-            width: 45%; 
-            text-align: center;
-        }
-        .signature-line {
-            height: 1px;
-            background-color: #000;
-            width: 100%;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .underline-placeholder {
-             border-bottom: 1px solid #000;
-             padding-left: 10px;
-             padding-right: 10px;
-             display: inline-block;
-        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-secondary); }
     </style>
 </head>
-<body>
 
-<div class="letter-sheet">
+<body class="selection:bg-pink-400 selection:text-black">
 
-    <!-- Header Section: Official Letterhead Style with Logo -->
-    <div class="header-logo nepali-font">
-        <!-- Logo image updated to use the available file name -->
-        <img src="logo.jpg" width="93px" alt="SARC Academic Club Logo" class="w-16 h-16 object-contain">
-        <div class="header-text">
-            <h1>सार्क एकेडेमिक क्लब</h1>
-            <p class="text-sm">सार्क एजुकेसन फाउन्डेसन, भी.न.पा. ०६, कञ्चनपुर</p>
-        </div>
-    </div>
-
-    <!-- Metadata: Date Only -->
-    <div class="nepali-font date-only">
-        मिति: <span class="underline-placeholder">२०८२/०७/२४ गते</span>
-    </div>
-
-    <!-- Recipient and Subject -->
-    <div class="nepali-font mb-6">
-        <p class="font-bold text-gray-800 underline text-lg">
-            विषय: कार्य समितिलाई पूर्णता दिने तथा भावी कार्ययोजना सम्बन्धी बैठक आह्वान।
-        </p>
-        <p class="mt-4">
-            श्री कार्य समिति सदस्यज्यूहरू,
-        </p>
-        <p>
-            सार्क एकेडेमिक क्लब, २०८२
-        </p>
-    </div>
-
-    <!-- Body Content -->
-    <div class="nepali-font text-gray-800">
-        <p class="mb-5 indent-8">
-            क्लबको सञ्चालन निर्देशिका, २०८२ लाई पूर्ण रूपमा पालना गर्नका लागि र यस शैक्षिक सत्रको कामलाई प्रभावकारी ढंगले अगाडि बढाउनका लागि देहाय बमोजिम अत्यावश्यक बैठक आयोजना गरिएको छ। निर्देशिका अनुसार न्यूनतम ९ जना सदस्य आवश्यक भए तापनि हाल कार्य समितिमा ५ जना मात्र सदस्य रहेकोले, अपुग सदस्यको निर्वाचन/चयन यस बैठकको मुख्य एजेन्डा हुनेछ।
-        </p>
-
-        <p class="font-bold text-lg mt-5 mb-3 text-gray-700">
-            बैठकका मुख्य एजेन्डाहरू:
-        </p>
-        <ul class="agenda-list text-base">
-            <li class="font-semibold text-gray-900">
-                कार्य समितिलाई पूर्णता दिने (अपुग सदस्यहरूको निर्वाचन/चयन)।
-            </li>
-            <li>
-                क्लबको वार्षिक कार्ययोजना र भावी कार्यक्रमहरूको समयतालिकामाथि छलफल।
-            </li>
-            <li>
-                अन्य विविध विषय।
-            </li>
-        </ul>
-
-        <p class="font-bold mt-8 mb-4 text-gray-900">
-            बैठक सम्बन्धी विवरण:
-        </p>
-        <table class="w-full text-base border-collapse">
-            <tr>
-                <td class="w-40 font-semibold text-gray-700 py-1">मिति</td>
-                <td class="py-1">: <span class="underline-placeholder">२०८२/०७/२४ गते</span></td>
-            </tr>
-            <tr>
-                <td class="w-40 font-semibold text-gray-700 py-1">समय</td>
-                <td class="py-1">: <span class="underline-placeholder">दिउँसो १:५० बजे देखि २:१० बजेसम्म (ब्रेक समय)</span></td>
-            </tr>
-            <tr>
-                <td class="w-40 font-semibold text-gray-700 py-1">स्थान (Location)</td>
-                <td class="py-1">: <span class="underline-placeholder">विद्यालयको SpaceX सेक्सन</span></td>
-            </tr>
-        </table>
-        
-        <p class="mt-8 indent-8">
-            कार्य समितिको कानुनी आधार र प्रभावकारिताको लागि यो बैठक महत्त्वपूर्ण भएकोले, तोकिएको समयमा अनिवार्य उपस्थितिको लागि अनुरोध गरिन्छ।
-        </p>
-    </div>
-
-    <!-- Signature Area: Side by Side for President and Secretary -->
-    <div class="signature-area nepali-font">
-        <!-- President Signature Block -->
-        <div class="signature-block">
-            <div class="h-12 w-full">
-                <!-- Space for President's Signature -->
-            </div> 
-            <div class="signature-line"></div> 
-
-               <b>भुपेश राज भट्ट</b>
-               <br>
-                अध्यक्ष<br>
-                सार्क एकेडेमिक क्लब, २०८२
+    <!-- Navbar - Fixed and Glassy (z-50) -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-container p-4 transition-all duration-500 rounded-b-3xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#home" class="text-3xl font-extrabold" style="color: var(--color-primary);">BHUPESH.<span style="color: var(--color-secondary);">dev</span></a>
             
-        </div>
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#home" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Home</a>
+                <a href="#resume" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Resume</a>
+                <a href="#services" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Services</a>
+                <a href="#portfolio" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Portfolio</a>
+                <a href="#testimonials" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Testimonials</a>
+                <a href="#contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Contact</a>
+            </div>
 
-        <!-- Secretary Signature Block -->
-        <div class="signature-block">
-            <div class="h-12 w-full">
-                <!-- Space for Secretary's Signature -->
-            </div> 
-            <div class="signature-line"></div>                <b>पुष्प राज भट्ट</b>
-               <br>
-                सचिव<br>
-                सार्क एकेडेमिक क्लब, २०८२
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl transition-colors hover:bg-white/20" style="color: var(--color-primary);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Drawer (FIXED: Z-index increased to z-[60] to overlay the navbar) -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/70 hidden transition-opacity duration-300 md:hidden">
+        <!-- Sidebar container now uses high transparency glass-container -->
+        <div class="glass-container w-4/5 h-full absolute right-0 p-8 flex flex-col space-y-6 shadow-xl rounded-l-3xl">
+            <button id="close-menu-btn" class="self-end p-2 rounded-xl transition-colors hover:bg-white/20 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <a href="#home" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 rounded-lg border-b border-white/10">Home</a>
+            <a href="#resume" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 rounded-lg border-b border-white/10">Resume</a>
+            <a href="#services" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 rounded-lg border-b border-white/10">Services</a>
+            <a href="#portfolio" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 rounded-lg border-b border-white/10">Portfolio</a>
+            <a href="#testimonials" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 rounded-lg border-b border-white/10">Testimonials</a>
+            <a href="#contact" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 rounded-lg">Contact</a>
         </div>
     </div>
-</div>
 
-</body>
-</html>
+    <!-- Main Content Area -->
+    <main class="pt-24">
+        
+        <!-- 1. Home Section (Hero) - Text Visibility Fixed with Strong Contrast -->
+        <section id="home" class="min-h-[90vh] flex items-center justify-center text-center p-6 sm:p-10">
+            <div class="max-w-4xl fade-in-up">
+                <!-- Welcome Text - Pure White on Dark BG -->
+                <p class="text-xl sm:text-2xl mb-4 font-mono transition-opacity duration-1000 text-white">Hello, I am</p>
+                
+                <!-- Name - Highly Visible Gradient -->
+                <h1 class="text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-500 animate-pulse">
+                    Bhupesh Raj Bhatt
+                </h1>
+                
+                <!-- Auto-Typing Role Text - Neon Cyan Color -->
+                <p class="text-2xl sm:text-3xl font-light mt-6 max-w-2xl mx-auto h-12">
+                    <span id="typing-text" class="font-extrabold" style="color: var(--color-primary);"></span>
+                    <span id="typing-cursor" class="blinking-cursor text-4xl" style="color: var(--color-primary);">|</span>
+                </p>
+                
+                <div class="mt-12 flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
+                    <!-- Buttons with Neon Glow and Rounded-3xl -->
+                    <a href="#contact" class="glass-btn glass-container py-4 px-10 text-lg font-semibold rounded-3xl border" style="border-color: var(--color-primary); color: var(--color-primary);">
+                        Start a Project
+                    </a>
+                    <a href="#portfolio" class="glass-btn glass-container py-4 px-10 text-lg font-semibold rounded-3xl border border-white/30 hover:text-white">
+                        Explore Portfolio
+                    </a>
+                </div>
+            </div>
+        </section>
 
+        <!-- 2. Resume Section -->
+        <section id="resume" class="py-20 p-6">
+            <div class="max-w-7xl mx-auto fade-in-up">
+                <h2 class="text-5xl font-bold text-center text-white mb-16">My <span style="color: var(--color-primary);">Journey</span></h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Education Column -->
+                    <div class="space-y-8">
+                        <h3 class="text-3xl font-semibold border-b pb-4" style="color: var(--color-secondary); border-color: var(--color-secondary);">Education</h3>
+                        
+                        <!-- Rounded-3xl applied to all elements -->
+                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
+                            <p class="text-2xl font-bold text-white">Master of Science in Computer Science</p>
+                            <p style="color: var(--color-primary);">Stanford University | 2018 - 2020</p>
+                            <p class="text-white/80 mt-3">Focused on Advanced UI/UX, Real-time Data Visualization, and Adaptive Web Architecture.</p>
+                        </div>
+                        
+                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
+                            <p class="text-2xl font-bold text-white">Bachelor of Technology (B.Tech)</p>
+                            <p style="color: var(--color-primary);">Massachusetts Institute of Technology (MIT) | 2014 - 2018</p>
+                            <p class="text-white/80 mt-3">Specialized in Software Engineering and Human-Computer Interaction.</p>
+                        </div>
+                    </div>
+
+                    <!-- Experience Column -->
+                    <div class="space-y-8">
+                        <h3 class="text-3xl font-semibold border-b pb-4" style="color: var(--color-secondary); border-color: var(--color-secondary);">Experience</h3>
+                        
+                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
+                            <p class="text-2xl font-bold text-white">Lead Frontend Architect</p>
+                            <p style="color: var(--color-primary);">TechWave Solutions | 2022 - Present</p>
+                            <p class="text-white/80 mt-3">Led the development of a next-gen, highly-responsive SaaS platform using React and Tailwind.</p>
+                        </div>
+                        
+                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
+                            <p class="text-2xl font-bold text-white">Senior Web Developer</p>
+                            <p style="color: var(--color-primary);">Digital Forge Agency | 2020 - 2022</p>
+                            <p class="text-white/80 mt-3">Delivered over 30 bespoke web applications with a focus on modern design principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Services Section -->
+        <section id="services" class="py-20 p-6">
+            <div class="max-w-7xl mx-auto fade-in-up">
+                <h2 class="text-5xl font-bold text-center text-white mb-16">Expertise in <span style="color: var(--color-primary);">Transparency</span></h2>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    
+                    <!-- Service 1: Glassmorphism Design (Rounded-3xl) -->
+                    <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
+                        <div class="mb-4 transition-transform duration-500 group-hover:rotate-12" style="color: var(--color-secondary);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="3" y2="21"/><line x1="15" x2="15" y1="3" y2="21"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Advanced Glass UI</h3>
+                        <p class="text-white/70">Building next-generation interfaces with high blur, custom shadows, and multi-layered glass effects.</p>
+                    </div>
+
+                    <!-- Service 2: Adaptive/Responsive (Rounded-3xl) -->
+                    <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
+                        <div class="mb-4 transition-transform duration-500 group-hover:scale-125" style="color: var(--color-secondary);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-list"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><path d="M14 4h7"/><path d="M14 9h7"/><path d="M14 15h7"/><path d="M14 20h7"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Full Responsive Architecture</h3>
+                        <p class="text-white/70">Designing mobile-first systems ensuring perfect visual and functional adaptation to all devices.</p>
+                    </div>
+
+                    <!-- Service 3: High Animation (Rounded-3xl) -->
+                    <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
+                        <div class="mb-4 transition-transform duration-500 group-hover:scale-110" style="color: var(--color-secondary);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.92 5.814L2 12l8.08 3.186L12 21l1.92-5.814L22 12l-8.08-3.186L12 3Z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Fluid Animations & UX</h3>
+                        <p class="text-white/70">Implementing smooth, high-impact micro-interactions and scroll-based animations for engaging user experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. Portfolio (Project Showcase) Section -->
+        <section id="portfolio" class="py-20 p-6">
+            <div class="max-w-7xl mx-auto fade-in-up">
+                <h2 class="text-5xl font-bold text-center text-white mb-16">My <span style="color: var(--color-primary);">Showcase</span></h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    
+                    <!-- Project 1 (Rounded-3xl) -->
+                    <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
+                        <!-- Placeholder Image/Card Top -->
+                        <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
+                            
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Neon Data Dashboard</h3>
+                            <p class="text-white/70 mb-4">A high-density data dashboard rebuilt with pure glassmorphism for enhanced data readability and a futuristic look.</p>
+                            <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right ml-2"><path d="M8 12h16"/><path d="m18 18 6-6-6-6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 (Rounded-3xl) -->
+                    <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
+                        <!-- Placeholder Image/Card Top -->
+                        <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
+                            
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Fluid E-commerce Store</h3>
+                            <p class="text-white/70 mb-4">An innovative e-commerce experience featuring fluid transitions and adaptive layouts for mobile-first shoppers.</p>
+                            <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right ml-2"><path d="M8 12h16"/><path d="m18 18 6-6-6-6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 (Rounded-3xl) -->
+                    <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
+                        <!-- Placeholder Image/Card Top -->
+                        <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
+                            
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Aurora SaaS Launch Page</h3>
+                            <p class="text-white/70 mb-4">A high-conversion landing page utilizing subtle 3D effects and high-impact hero sections for product launch.</p>
+                            <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewB
