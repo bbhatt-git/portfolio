@@ -9,7 +9,13 @@ const testimonials = [
 ];
 
 // --- DOM ELEMENTS & INITIALIZATION ---
-const testimonialsGridElement = document.getElementById('testimonials-grid'); // New element
+// Testimonial Slider Elements
+const testimonialSlider = document.getElementById('testimonial-slider');
+const nextBtn = document.getElementById('next-btn');
+const prevBtn = document.getElementById('prev-btn');
+let currentTestimonialIndex = 0; // State for the slider
+
+// General Elements
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const closeMenuBtn = document.getElementById('close-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -17,8 +23,6 @@ const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 const typingTextElement = document.getElementById('typing-text');
 const currentYearEl = document.getElementById('current-year');
 const nav = document.getElementById('navbar');
-
-// Removed: slider, nextBtn, prevBtn, currentTestimonialIndex
 
 
 // --- FUNCTIONS ---
@@ -65,30 +69,40 @@ function erase() {
     }
 }
 
-// 3. Testimonial Grid Rendering Logic (NEW)
-function renderTestimonialsGrid() {
-    if (!testimonialsGridElement) return;
+// 3. Testimonial Slider Rendering Logic (REINTRODUCED)
+function renderTestimonialSlider() {
+    if (!testimonialSlider) return;
 
-    let htmlContent = '';
-    testimonials.forEach(t => {
-        htmlContent += `
-            <div class="glass-container p-8 rounded-3xl flex flex-col justify-between hover:scale-[1.03] transition-transform duration-300">
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
-                    <p class="text-lg italic text-white/90 mb-6">${t.quote}</p>
-                </div>
-                <div class="mt-4 pt-4 border-t border-white/10">
-                    <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
-                    <p class="text-white/60 text-sm">${t.company}</p>
-                </div>
+    const t = testimonials[currentTestimonialIndex];
+    const htmlContent = `
+        <div class="glass-container p-8 sm:p-10 rounded-3xl w-full mx-auto flex flex-col justify-between h-full">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
+                <p class="text-xl italic text-white/90 mb-6 font-light">"${t.quote}"</p>
             </div>
-        `;
-    });
-    testimonialsGridElement.innerHTML = htmlContent;
+            <div class="mt-4 pt-4 border-t border-white/10">
+                <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
+                <p class="text-white/60 text-sm">${t.company}</p>
+            </div>
+        </div>
+    `;
+
+    // Simple fade transition
+    testimonialSlider.style.opacity = '0';
+    setTimeout(() => {
+        testimonialSlider.innerHTML = htmlContent;
+        testimonialSlider.style.opacity = '1';
+    }, 150);
+}
+
+// 4. Testimonial Navigation Logic (REINTRODUCED)
+function navigateTestimonials(direction) {
+    currentTestimonialIndex = (currentTestimonialIndex + direction + testimonials.length) % testimonials.length;
+    renderTestimonialSlider();
 }
 
 
-// 4. Scroll and Visibility Animations (Intersection Observer)
+// 5. Scroll and Visibility Animations (Intersection Observer)
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -103,7 +117,7 @@ const observer = new IntersectionObserver((entries) => {
     rootMargin: '0px 0px -100px 0px'
 });
 
-// 5. Navbar Sticky Shrink/Glass Effect
+// 6. Navbar Sticky Shrink/Glass Effect
 const handleScroll = () => {
     if (nav) {
         if (window.scrollY > 80) {
@@ -136,13 +150,17 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', toggleMobileMenu); // Close menu on link click
     });
 
+    // Slider Navigation Listeners
+    if (nextBtn) nextBtn.addEventListener('click', () => navigateTestimonials(1));
+    if (prevBtn) prevBtn.addEventListener('click', () => navigateTestimonials(-1));
+
     // Start Typing Effect
     if (typingTextElement) {
         setTimeout(type, delayBeforeTyping);
     }
 
-    // Testimonial Grid Setup (NEW)
-    renderTestimonialsGrid();
+    // Initial Testimonial Render
+    renderTestimonialSlider();
 
     // Scroll Animations
     document.querySelectorAll('section > div').forEach(el => {
@@ -151,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Lucide Icon Replacement
-    // The lucide library is loaded via CDN, so we ensure the function exists before calling
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
     }
