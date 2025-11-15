@@ -9,10 +9,7 @@ const testimonials = [
 ];
 
 // --- DOM ELEMENTS & INITIALIZATION ---
-// Elements are guaranteed to exist since the script is loaded just before </body>
-const slider = document.getElementById('testimonial-slider');
-const nextBtn = document.getElementById('next-btn');
-const prevBtn = document.getElementById('prev-btn');
+const testimonialsGridElement = document.getElementById('testimonials-grid'); // New element
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const closeMenuBtn = document.getElementById('close-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -21,7 +18,7 @@ const typingTextElement = document.getElementById('typing-text');
 const currentYearEl = document.getElementById('current-year');
 const nav = document.getElementById('navbar');
 
-let currentTestimonialIndex = 0;
+// Removed: slider, nextBtn, prevBtn, currentTestimonialIndex
 
 
 // --- FUNCTIONS ---
@@ -68,49 +65,26 @@ function erase() {
     }
 }
 
+// 3. Testimonial Grid Rendering Logic (NEW)
+function renderTestimonialsGrid() {
+    if (!testimonialsGridElement) return;
 
-// 3. Testimonial Revolving Logic
-function changeTestimonial(direction) {
-    if (!slider) return;
-
-    const card = slider.querySelector('.testimonial-card');
-    const transitionDuration = 500; // ms
-
-    if (card) {
-        // Slide Out transition
-        card.style.transition = `transform ${transitionDuration / 1000}s cubic-bezier(0.4, 0, 0.6, 1), opacity ${transitionDuration / 1000}s ease-in`;
-        card.style.transform = `translateY(${direction > 0 ? '-70px' : '70px'})`;
-        card.style.opacity = '0';
-    }
-
-    currentTestimonialIndex = (currentTestimonialIndex + direction + testimonials.length) % testimonials.length;
-
-    // Wait for slide out, then update content and slide in
-    setTimeout(() => {
-        const t = testimonials[currentTestimonialIndex];
-
-        // Content update (start off-screen)
-        const startY = direction > 0 ? '70px' : '-70px';
-        slider.innerHTML = `
-            <div class="testimonial-card glass-container p-10 rounded-3xl text-center max-w-2xl w-full"
-                 style="opacity: 0; transform: translateY(${startY});">
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mx-auto mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
-
-                <p class="text-xl sm:text-2xl italic text-white mb-6">${t.quote}</p>
-                <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
-                <p class="text-white/60 text-sm">${t.company}</p>
+    let htmlContent = '';
+    testimonials.forEach(t => {
+        htmlContent += `
+            <div class="glass-container p-8 rounded-3xl flex flex-col justify-between hover:scale-[1.03] transition-transform duration-300">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
+                    <p class="text-lg italic text-white/90 mb-6">${t.quote}</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-white/10">
+                    <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
+                    <p class="text-white/60 text-sm">${t.company}</p>
+                </div>
             </div>
         `;
-
-        // Trigger slide in
-        setTimeout(() => {
-            const newCard = slider.querySelector('.testimonial-card');
-            newCard.style.transition = `transform ${transitionDuration / 1000}s cubic-bezier(0.23, 1, 0.32, 1), opacity ${transitionDuration / 1000}s cubic-bezier(0.23, 1, 0.32, 1)`;
-            newCard.style.transform = 'translateY(0)';
-            newCard.style.opacity = '1';
-        }, 10);
-    }, card ? transitionDuration : 0);
+    });
+    testimonialsGridElement.innerHTML = htmlContent;
 }
 
 
@@ -162,21 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', toggleMobileMenu); // Close menu on link click
     });
 
-    // Testimonial Navigation Listeners
-    if (nextBtn) nextBtn.addEventListener('click', () => changeTestimonial(1));
-    if (prevBtn) prevBtn.addEventListener('click', () => changeTestimonial(-1));
-
     // Start Typing Effect
     if (typingTextElement) {
         setTimeout(type, delayBeforeTyping);
     }
 
-    // Testimonial Setup
-    if (slider) {
-        changeTestimonial(1); // Initial testimonial load
-        // Auto-revolve testimonials every 7 seconds
-        setInterval(() => changeTestimonial(1), 7000);
-    }
+    // Testimonial Grid Setup (NEW)
+    renderTestimonialsGrid();
 
     // Scroll Animations
     document.querySelectorAll('section > div').forEach(el => {
