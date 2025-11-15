@@ -3,77 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhupesh Bhatt | Portfolio</title>
+    <title>Bhupesh Raj Bhatt | Neon Glass Portfolio</title>
     <!-- Load Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Lucide Icons from CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        /* --- CORE STYLING & PALETTE --- */
-        :root {
-            /* Define colors for easy JavaScript and CSS access */
-            --color-primary: #00f5d4; /* Neon Cyan Accent */
-            --color-secondary: #ff00ff; /* Neon Magenta (for highlights/glow) */
-            --color-background: #0d001a; /* Deep Violet/Black Base */
-        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--color-background);
-            /* Complex gradient for high-contrast glass backdrop */
-            background-image: linear-gradient(135deg, #1f003b 0%, #000a20 60%, #1f003b 100%);
-            min-height: 100vh;
-            color: #ffffff; /* Pure white text for max visibility */
-            scroll-behavior: smooth;
-        }
-
-        /* --- GLASSMORHISM EFFECT (Increased Blur & Transparency) --- */
-        .glass-container {
-            /* Using white with 15% opacity for better visibility/contrast */
-            background-color: rgba(255, 255, 255, 0.15); 
-            backdrop-filter: blur(25px); /* Very high blur for deep glass effect */
-            -webkit-backdrop-filter: blur(25px); 
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Clearer edge */
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5); /* Deep shadow */
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother transitions */
-        }
-
-        /* --- UI & ANIMATION ENHANCEMENTS --- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .fade-in-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .glass-btn:hover {
-            /* Neon glow effect applied directly via CSS variables */
-            box-shadow: 0 0 30px var(--color-primary), inset 0 0 15px var(--color-primary);
-            transform: translateY(-4px) scale(1.02);
-        }
-        
-        .blinking-cursor {
-            opacity: 1;
-            animation: blink 0.7s step-end infinite;
-            font-weight: 900;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Custom scrollbar for aesthetics */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
-        ::-webkit-scrollbar-thumb {
-            background: var(--color-primary); 
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover { background: var(--color-secondary); }
-    </style>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="selection:bg-pink-400 selection:text-black">
@@ -81,8 +18,8 @@
     <!-- Navbar - Fixed and Glassy (z-50) -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-container p-4 transition-all duration-500 rounded-b-3xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#home" class="text-3xl font-extrabold" style="color: var(--color-primary);">Bhupesh <span style="color: var(--color-secondary);">Bhatt.</span></a>
-            
+            <a href="#home" class="text-3xl font-extrabold" style="color: var(--color-primary);">BHUPESH.<span style="color: var(--color-secondary);">dev</span></a>
+
             <!-- Desktop Nav Links -->
             <div class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#home" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2 rounded-xl">Home</a>
@@ -99,7 +36,7 @@
             </button>
         </div>
     </nav>
-    
+
     <!-- Mobile Menu Drawer (z-[60] to overlay the navbar) -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/70 hidden transition-opacity duration-300 md:hidden">
         <!-- Sidebar container now uses high transparency glass-container -->
@@ -118,24 +55,24 @@
 
     <!-- Main Content Area -->
     <main class="pt-24">
-        
+
         <!-- 1. Home Section (Hero) -->
         <section id="home" class="min-h-[90vh] flex items-center justify-center text-center p-6 sm:p-10">
             <div class="max-w-4xl fade-in-up">
                 <!-- Welcome Text - Pure White on Dark BG -->
                 <p class="text-xl sm:text-2xl mb-4 font-mono transition-opacity duration-1000 text-white">Hello, I am</p>
-                
+
                 <!-- Name - Highly Visible Gradient -->
                 <h1 class="text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-500 animate-pulse">
                     Bhupesh Raj Bhatt
                 </h1>
-                
+
                 <!-- Auto-Typing Role Text - Neon Cyan Color -->
                 <p class="text-2xl sm:text-3xl font-light mt-6 max-w-2xl mx-auto h-12">
                     <span id="typing-text" class="font-extrabold" style="color: var(--color-primary);"></span>
                     <span id="typing-cursor" class="blinking-cursor text-4xl" style="color: var(--color-primary);">|</span>
                 </p>
-                
+
                 <div class="mt-12 flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
                     <!-- Buttons with Neon Glow and Rounded-3xl -->
                     <a href="#contact" class="glass-btn glass-container py-4 px-10 text-lg font-semibold rounded-3xl border" style="border-color: var(--color-primary); color: var(--color-primary);">
@@ -152,19 +89,19 @@
         <section id="resume" class="py-20 p-6">
             <div class="max-w-7xl mx-auto fade-in-up">
                 <h2 class="text-5xl font-bold text-center text-white mb-16">My <span style="color: var(--color-primary);">Journey</span></h2>
-                
+
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Education Column -->
                     <div class="space-y-8">
                         <h3 class="text-3xl font-semibold border-b pb-4" style="color: var(--color-secondary); border-color: var(--color-secondary);">Education</h3>
-                        
+
                         <!-- Rounded-3xl applied to all elements -->
                         <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
                             <p class="text-2xl font-bold text-white">Master of Science in Computer Science</p>
                             <p style="color: var(--color-primary);">Stanford University | 2018 - 2020</p>
                             <p class="text-white/80 mt-3">Focused on Advanced UI/UX, Real-time Data Visualization, and Adaptive Web Architecture.</p>
                         </div>
-                        
+
                         <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
                             <p class="text-2xl font-bold text-white">Bachelor of Technology (B.Tech)</p>
                             <p style="color: var(--color-primary);">Massachusetts Institute of Technology (MIT) | 2014 - 2018</p>
@@ -175,13 +112,13 @@
                     <!-- Experience Column -->
                     <div class="space-y-8">
                         <h3 class="text-3xl font-semibold border-b pb-4" style="color: var(--color-secondary); border-color: var(--color-secondary);">Experience</h3>
-                        
+
                         <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
                             <p class="text-2xl font-bold text-white">Lead Frontend Architect</p>
                             <p style="color: var(--color-primary);">TechWave Solutions | 2022 - Present</p>
                             <p class="text-white/80 mt-3">Led the development of a next-gen, highly-responsive SaaS platform using React and Tailwind.</p>
                         </div>
-                        
+
                         <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
                             <p class="text-2xl font-bold text-white">Senior Web Developer</p>
                             <p style="color: var(--color-primary);">Digital Forge Agency | 2020 - 2022</p>
@@ -196,9 +133,9 @@
         <section id="services" class="py-20 p-6">
             <div class="max-w-7xl mx-auto fade-in-up">
                 <h2 class="text-5xl font-bold text-center text-white mb-16">Expertise in <span style="color: var(--color-primary);">Transparency</span></h2>
-                
+
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                    
+
                     <!-- Service 1: Glassmorphism Design (Rounded-3xl) -->
                     <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
                         <div class="mb-4 transition-transform duration-500 group-hover:rotate-12" style="color: var(--color-secondary);">
@@ -228,19 +165,19 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 4. Portfolio (Project Showcase) Section -->
         <section id="portfolio" class="py-20 p-6">
             <div class="max-w-7xl mx-auto fade-in-up">
                 <h2 class="text-5xl font-bold text-center text-white mb-16">My <span style="color: var(--color-primary);">Showcase</span></h2>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    
+
                     <!-- Project 1 (Rounded-3xl) -->
                     <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
                         <!-- Placeholder Image/Card Top -->
                         <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            
+                            Neon Data Dashboard Mockup
                         </div>
                         <div class="p-8">
                             <h3 class="text-2xl font-semibold mb-2 text-white">Neon Data Dashboard</h3>
@@ -256,7 +193,7 @@
                     <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
                         <!-- Placeholder Image/Card Top -->
                         <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            [attachment_0](attachment)
+                            Fluid E-commerce Store Mockup
                         </div>
                         <div class="p-8">
                             <h3 class="text-2xl font-semibold mb-2 text-white">Fluid E-commerce Store</h3>
@@ -267,12 +204,12 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <!-- Project 3 (Rounded-3xl) -->
                     <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
                         <!-- Placeholder Image/Card Top -->
                         <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            
+                            Aurora SaaS Launch Page Mockup
                         </div>
                         <div class="p-8">
                             <h3 class="text-2xl font-semibold mb-2 text-white">Aurora SaaS Launch Page</h3>
@@ -286,18 +223,18 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 5. Testimonials (Auto Revolving/Sliding) Section -->
         <section id="testimonials" class="py-20 p-6">
             <div class="max-w-4xl mx-auto fade-in-up">
                 <h2 class="text-5xl font-bold text-center text-white mb-16">What Clients <span style="color: var(--color-primary);">Say</span></h2>
-                
+
                 <div class="relative h-72 sm:h-80 overflow-hidden">
                     <div id="testimonial-slider" class="absolute inset-0 flex items-center justify-center">
                         <!-- Content injected by JavaScript -->
                     </div>
                 </div>
-                
+
                 <div class="flex justify-center mt-10 space-x-5">
                     <!-- Buttons with Rounded-3xl and Neon Accent -->
                     <button id="prev-btn" class="p-4 glass-container rounded-3xl hover:bg-white/30 transition-all duration-300" style="color: var(--color-primary);">
@@ -309,17 +246,17 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 6. Contact Section -->
         <section id="contact" class="py-20 p-6">
             <div class="max-w-3xl mx-auto fade-in-up">
                 <h2 class="text-5xl font-bold text-center text-white mb-16">Ready to <span style="color: var(--color-primary);">Start?</span></h2>
-                
+
                 <!-- Form with Rounded-3xl and Enhanced Glassmorphism -->
                 <form class="glass-container p-8 sm:p-12 rounded-3xl space-y-8">
                     <div>
                         <label for="name" class="block text-white/90 mb-3 text-lg">Name</label>
-                        <input type="text" id="name" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="Your Full Name">
+                                             <input type="text" id="name" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="Your Full Name">
                     </div>
                     <div>
                         <label for="email" class="block text-white/90 mb-3 text-lg">Email</label>
@@ -360,174 +297,7 @@
         </div>
     </footer>
 
-    <script>
-        // --- DATA ---
-        const roles = ["Fullstack Developer", "UI Designer", "Graphics Designer", "Problem Solver", "Innovator"];
-        const testimonials = [
-            { quote: "The glassmorphism design brought a premium feel to our app that immediately impressed our investors. Flawless responsiveness on mobile.", name: "Alex Chen", company: "CEO, InnovateTech" },
-            { quote: "Outstanding animation work! The transitions are so smooth and polished. It elevated our brand's presence beyond expectations.", name: "Dr. Lena Khan", company: "Lead Designer, FutureCorp" },
-            { quote: "I needed a complex site that felt light and futuristic. This developer delivered exactly that, with amazing attention to detail.", name: "Marcus 'Mace' Bell", company: "Creative Director, Apex Media" },
-            { quote: "Bhupesh's ability to blend high-performance code with cutting-edge visual design is truly exceptional. Highly recommended.", name: "Sarah Jimenez", company: "CTO, CloudNine Systems" },
-            { quote: "A true master of modern web development. The adaptive layout saved us countless hours of rework across different devices.", name: "Ethan Cole", company: "Product Manager, GridLink" },
-        ];
-
-        // --- DOM ELEMENTS & INITIALIZATION ---
-        const slider = document.getElementById('testimonial-slider');
-        const nextBtn = document.getElementById('next-btn');
-        const prevBtn = document.getElementById('prev-btn');
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        const typingTextElement = document.getElementById('typing-text');
-
-        let currentTestimonialIndex = 0;
-        
-        // Set the current year in the footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // --- FUNCTIONS ---
-
-        // 1. Mobile Menu Logic
-        const toggleMobileMenu = () => {
-            mobileMenu.classList.toggle('hidden');
-        };
-
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        closeMenuBtn.addEventListener('click', toggleMobileMenu);
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMobileMenu); // Close menu on link click
-        });
-
-
-        // 2. Auto Typing Effect Logic (Smoother transitions)
-        let roleIndex = 0;
-        let charIndex = 0;
-        const typingSpeed = 70;
-        const erasingSpeed = 40;
-        const delayBeforeTyping = 1800;
-        const delayBeforeErasing = 1500;
-
-        function type() {
-            const currentRole = roles[roleIndex];
-            if (charIndex < currentRole.length) {
-                typingTextElement.textContent += currentRole.charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingSpeed);
-            } else {
-                setTimeout(erase, delayBeforeErasing);
-            }
-        }
-
-        function erase() {
-            const currentRole = roles[roleIndex];
-            if (charIndex > 0) {
-                typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(erase, erasingSpeed);
-            } else {
-                roleIndex = (roleIndex + 1) % roles.length;
-                setTimeout(type, 800);
-            }
-        }
-
-        setTimeout(type, delayBeforeTyping);
-
-
-        // 3. Testimonial Revolving Logic (Smoother Vertical Slide)
-        function changeTestimonial(direction) {
-            const card = slider.querySelector('.testimonial-card');
-            const transitionDuration = 500; // ms
-
-            if (card) {
-                // Slide Out transition
-                card.style.transition = `transform ${transitionDuration / 1000}s cubic-bezier(0.4, 0, 0.6, 1), opacity ${transitionDuration / 1000}s ease-in`;
-                card.style.transform = `translateY(${direction > 0 ? '-70px' : '70px'})`;
-                card.style.opacity = '0';
-            }
-
-            currentTestimonialIndex = (currentTestimonialIndex + direction + testimonials.length) % testimonials.length;
-
-            // Wait for slide out, then update content and slide in
-            setTimeout(() => {
-                const t = testimonials[currentTestimonialIndex];
-                
-                // Content update (start off-screen)
-                const startY = direction > 0 ? '70px' : '-70px';
-                slider.innerHTML = `
-                    <div class="testimonial-card glass-container p-10 rounded-3xl text-center max-w-2xl w-full" 
-                         style="opacity: 0; transform: translateY(${startY});">
-                        
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mx-auto mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
-                        
-                        <p class="text-xl sm:text-2xl italic text-white mb-6">${t.quote}</p>
-                        <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
-                        <p class="text-white/60 text-sm">${t.company}</p>
-                    </div>
-                `;
-
-                // Trigger slide in
-                setTimeout(() => {
-                    const newCard = slider.querySelector('.testimonial-card');
-                    newCard.style.transition = `transform ${transitionDuration / 1000}s cubic-bezier(0.23, 1, 0.32, 1), opacity ${transitionDuration / 1000}s cubic-bezier(0.23, 1, 0.32, 1)`;
-                    newCard.style.transform = 'translateY(0)';
-                    newCard.style.opacity = '1';
-                }, 10); 
-            }, card ? transitionDuration : 0);
-        }
-        
-        nextBtn.addEventListener('click', () => changeTestimonial(1));
-        prevBtn.addEventListener('click', () => changeTestimonial(-1));
-        
-        // Initial testimonial load
-        changeTestimonial(1);
-        
-        // Auto-revolve testimonials every 7 seconds (faster)
-        setInterval(() => changeTestimonial(1), 7000);
-
-
-        // 4. Scroll and Visibility Animations (Intersection Observer)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Stop observing once visible, but allow continuous observation for the typing effect's parent
-                    if (entry.target.id !== 'home') {
-                        observer.unobserve(entry.target); 
-                    }
-                }
-            });
-        }, {
-            threshold: 0.1, 
-            rootMargin: '0px 0px -100px 0px'
-        });
-
-        document.querySelectorAll('section > div').forEach(el => {
-            // Apply fade-in-up to all primary containers
-            el.classList.add('fade-in-up');
-            observer.observe(el);
-        });
-
-        // 5. Navbar Sticky Shrink/Glass Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 80) {
-                // Deeper background color when scrolled to maintain glass effect
-                nav.style.backgroundColor = 'rgba(13, 0, 26, 0.9)'; 
-                nav.classList.add('py-2');
-                nav.classList.remove('p-4');
-            } else {
-                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'; // Base glass-container color
-                nav.classList.remove('py-2');
-                nav.classList.add('p-4');
-            }
-        });
-
-        // 6. Lucide Icon Replacement
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-        });
-
-    </script>
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
