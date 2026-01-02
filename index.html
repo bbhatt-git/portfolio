@@ -1,303 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhupesh Raj Bhatt | Neon Glass Portfolio</title>
-    <!-- Load Tailwind CSS from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons from CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Portfolio of Bhupesh Raj Bhatt - Creative Developer & Designer">
+        <title>Bhupesh Bhatt | Portfolio</title>
+        <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
 
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="style.css">
-</head>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<body class="selection:bg-pink-400 selection:text-black">
+        <link rel="stylesheet" href="style.css">
 
-    <!-- Navbar - Fixed and Glassy (z-50) -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-container p-4 transition-all duration-500">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#home" class="text-3xl font-extrabold" style="color: var(--color-primary);">BHUPESH.<span style="color: var(--color-secondary);">dev</span></a>
+        <script>
+        (function() {
+            const isMobile = /Mobi|Android|iPhone|iPad|IEMobile|WPDesktop/i.test(navigator.userAgent) || window.innerWidth < 992;
+            const mobileUrl = 'https://bbhatt.com.np/mobile';
 
-            <!-- Desktop Nav Links (Removed rounded-xl) -->
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#home" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2">Home</a>
-                <a href="#resume" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2">Resume</a>
-                <a href="#services" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2">Services</a>
-                <a href="#portfolio" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2">Portfolio</a>
-                <a href="#testimonials" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2">Testimonials</a>
-                <a href="#contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 p-2">Contact</a>
-            </div>
+            if (isMobile && window.location.href.indexOf('/mobile') === -1) {
+                window.location.replace(mobileUrl);
+            }
+        })();
+    </script>
+    </head>
+    <body>
 
-            <!-- Mobile Menu Button (Retained rounded-xl for touch target) -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl transition-colors hover:bg-white/20" style="color: var(--color-primary);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            </button>
+        <div class="bg-layer">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
         </div>
-    </nav>
 
-    <!-- Mobile Menu Drawer (z-[60] to overlay the navbar) -->
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/70 hidden transition-opacity duration-300 md:hidden">
-        <!-- Sidebar container now uses high transparency glass-container (Retained rounded-l-3xl for drawer aesthetic) -->
-        <div class="glass-container w-4/5 h-full absolute right-0 p-8 flex flex-col space-y-6 shadow-xl rounded-l-3xl">
-            <button id="close-menu-btn" class="self-end p-2 rounded-xl transition-colors hover:bg-white/20 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-            </button>
-            <!-- Mobile Links (Removed rounded-lg) -->
-            <a href="#home" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 border-b border-white/10">Home</a>
-            <a href="#resume" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 border-b border-white/10">Resume</a>
-            <a href="#services" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 border-b border-white/10">Services</a>
-            <a href="#portfolio" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 border-b border-white/10">Portfolio</a>
-            <a href="#testimonials" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3 border-b border-white/10">Testimonials</a>
-            <a href="#contact" class="mobile-nav-link text-xl hover:text-pink-400 transition-colors py-3 px-3">Contact</a>
-        </div>
-    </div>
+        <nav class="navbar">
+            <div class="container nav-inner">
+                <a href="#home" class="logo logo-gradient"><code>>_</code>
+                    <span class="logo-circle">Bhupesh Bhatt</span></a>
 
-    <!-- Main Content Area -->
-    <main class="pt-24">
+                <div class="nav-actions">
+                    <ul class="nav-menu">
+                        <li><a href="#home"
+                                class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#services"
+                                class="nav-link">Services</a></li>
+                        <li><a href="#work" class="nav-link">Projects</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
 
-        <!-- 1. Home Section (Hero) -->
-        <section id="home" class="min-h-[90vh] flex items-center justify-center text-center p-6 sm:p-10">
-            <div class="max-w-4xl fade-in-up">
-                <!-- Welcome Text - Pure White on Dark BG -->
-                <p class="text-xl sm:text-2xl mb-4 font-mono transition-opacity duration-1000 text-white">Hello, I am</p>
+                        <li> <button id="theme-btn" aria-label="Toggle Theme">
+                                <i class="fas fa-moon"></i>
+                            </button></li>
+                    </ul>
 
-                <!-- Name - Highly Visible Gradient -->
-                <h1 class="text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-500 animate-pulse">
-                    Bhupesh Raj Bhatt
-                </h1>
-
-                <!-- Auto-Typing Role Text - Neon Cyan Color -->
-                <p class="text-2xl sm:text-3xl font-light mt-6 max-w-2xl mx-auto h-12">
-                    <span id="typing-text" class="font-extrabold" style="color: var(--color-primary);"></span>
-                    <span id="typing-cursor" class="blinking-cursor text-4xl" style="color: var(--color-primary);">|</span>
-                </p>
-
-                <div class="mt-12 flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
-                    <!-- Buttons with Neon Glow and Rounded-3xl -->
-                    <a href="#contact" class="glass-btn glass-container py-4 px-10 text-lg font-semibold rounded-3xl border" style="border-color: var(--color-primary); color: var(--color-primary);">
-                        Start a Project
-                    </a>
-                    <a href="#portfolio" class="glass-btn glass-container py-4 px-10 text-lg font-semibold rounded-3xl border border-white/30 hover:text-white">
-                        Explore Portfolio
-                    </a>
                 </div>
             </div>
-        </section>
+        </nav>
 
-        <!-- 2. Resume Section -->
-        <section id="resume" class="py-20 p-6">
-            <div class="max-w-7xl mx-auto fade-in-up">
-                <h2 class="text-5xl font-bold text-center text-white mb-16">My <span style="color: var(--color-primary);">Journey</span></h2>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Education Column -->
-                    <div class="space-y-8">
-                        <h3 class="text-3xl font-semibold border-b pb-4" style="color: var(--color-secondary); border-color: var(--color-secondary);">Education</h3>
-
-                        <!-- Rounded-3xl applied to all elements -->
-                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
-                            <p class="text-2xl font-bold text-white">Master of Science in Computer Science</p>
-                            <p style="color: var(--color-primary);">Stanford University | 2018 - 2020</p>
-                            <p class="text-white/80 mt-3">Focused on Advanced UI/UX, Real-time Data Visualization, and Adaptive Web Architecture.</p>
-                        </div>
-
-                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
-                            <p class="text-2xl font-bold text-white">Bachelor of Technology (B.Tech)</p>
-                            <p style="color: var(--color-primary);">Massachusetts Institute of Technology (MIT) | 2014 - 2018</p>
-                            <p class="text-white/80 mt-3">Specialized in Software Engineering and Human-Computer Interaction.</p>
-                        </div>
-                    </div>
-
-                    <!-- Experience Column -->
-                    <div class="space-y-8">
-                        <h3 class="text-3xl font-semibold border-b pb-4" style="color: var(--color-secondary); border-color: var(--color-secondary);">Experience</h3>
-
-                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
-                            <p class="text-2xl font-bold text-white">Lead Frontend Architect</p>
-                            <p style="color: var(--color-primary);">TechWave Solutions | 2022 - Present</p>
-                            <p class="text-white/80 mt-3">Led the development of a next-gen, highly-responsive SaaS platform using React and Tailwind.</p>
-                        </div>
-
-                        <div class="glass-container p-8 rounded-3xl hover:scale-[1.03]">
-                            <p class="text-2xl font-bold text-white">Senior Web Developer</p>
-                            <p style="color: var(--color-primary);">Digital Forge Agency | 2020 - 2022</p>
-                            <p class="text-white/80 mt-3">Delivered over 30 bespoke web applications with a focus on modern design principles.</p>
+        <main>
+            <section id="home" class="hero">
+                <div class="container hero-content">
+                    <div class="hero-text">
+                        <a href="#contact"><span class="badge reveal">AVAILABLE FOR WORK</span></a>
+                        <h1 class="reveal delay-1">Hello, I'm <br> <span
+                                class="gradient-text">Bhupesh Raj Bhatt
+                            </span></h1>
+                        <p class="reveal delay-2">
+                            Merging technical depth with artistic vision to
+                            craft pixel-perfect digital experiences.
+                        </p>
+                        <div class="hero-btns reveal delay-3">
+                            <a href="#work" class="btn btn-primary">View
+                                Projects</a>
+                            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                </div>
+            </section>
 
-        <!-- 3. Services Section -->
-        <section id="services" class="py-20 p-6">
-            <div class="max-w-7xl mx-auto fade-in-up">
-                <h2 class="text-5xl font-bold text-center text-white mb-16">Expertise in <span style="color: var(--color-primary);">Transparency</span></h2>
-
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                    <!-- Service 1: Glassmorphism Design (Rounded-3xl) -->
-                    <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
-                        <div class="mb-4 transition-transform duration-500 group-hover:rotate-12" style="color: var(--color-secondary);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="3" y2="21"/><line x1="15" x2="15" y1="3" y2="21"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-3 text-white">Advanced Glass UI</h3>
-                        <p class="text-white/70">Building next-generation interfaces with high blur, custom shadows, and multi-layered glass effects.</p>
+            <section id="about" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <h2>About Me</h2>
+                        <div class="line"></div>
                     </div>
 
-                    <!-- Service 2: Adaptive/Responsive (Rounded-3xl) -->
-                    <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
-                        <div class="mb-4 transition-transform duration-500 group-hover:scale-125" style="color: var(--color-secondary);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-list"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><path d="M14 4h7"/><path d="M14 9h7"/><path d="M14 15h7"/><path d="M14 20h7"/></svg>
+                    <div class="about-grid">
+                        <div class="about-text glass reveal delay-1">
+                            <p>
+                                I am a passionate developer based in Nepal. My
+                                expertise spans across the full software
+                                development lifecycle - from conceptualizing UI
+                                designs to deploying scalable backend
+                                architectures. I thrive on solving complex
+                                problems with clean, maintainable code.
+                            </p>
+                            <div class="stats-row">
+                                <div class="stat">
+                                    <h4>1+</h4>
+                                    <span>Years Exp.</span>
+                                </div>
+                                <div class="stat">
+                                    <h4>10+</h4>
+                                    <span>Projects</span>
+                                </div>
+                                <div class="stat">
+                                    <h4>15+</h4>
+                                    <span>Clients</span>
+                                </div>
+                                <div class="reveal"
+                                    style="margin-top: 13px">
+                                    <a href="assets/cv.pdf"
+                                        class="btn btn-primary">Download CV</a>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3 text-white">Full Responsive Architecture</h3>
-                        <p class="text-white/70">Designing mobile-first systems ensuring perfect visual and functional adaptation to all devices.</p>
-                    </div>
 
-                    <!-- Service 3: High Animation (Rounded-3xl) -->
-                    <div class="glass-container p-10 rounded-3xl flex flex-col items-center text-center hover:bg-white/20">
-                        <div class="mb-4 transition-transform duration-500 group-hover:scale-110" style="color: var(--color-secondary);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.92 5.814L2 12l8.08 3.186L12 21l1.92-5.814L22 12l-8.08-3.186L12 3Z"/></svg>
+                        <div class="skills-wrapper reveal delay-1">
+                            <h3>Tech Stack</h3>
+                            <div class="skill-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>C</span>
+                                <span>Python</span>
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>Node JS</span>
+                                <span>Next.js</span>
+                                <span>React</span>
+                                <span>Tailwind CSS</span>
+                                <span>AI/ML</span>
+                                <span>Bootstrap</span>
+                                <span>Firebase</span>
+                                <span>Wordpress</span>
+                                <span>Figma</span>
+                                <span>Flutter</span>
+                                <span>Adobe Photoshop</span>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3 text-white">Fluid Animations & UX</h3>
-                        <p class="text-white/70">Implementing smooth, high-impact micro-interactions and scroll-based animations for engaging user experiences.</p>
+
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4. Portfolio (Project Showcase) Section -->
-        <section id="portfolio" class="py-20 p-6">
-            <div class="max-w-7xl mx-auto fade-in-up">
-                <h2 class="text-5xl font-bold text-center text-white mb-16">My <span style="color: var(--color-primary);">Showcase</span></h2>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                    <!-- Project 1 (Rounded-3xl) -->
-                    <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
-                        <!-- Placeholder Image/Card Top -->
-                        <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            Neon Data Dashboard Mockup
-                        </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-semibold mb-2 text-white">Neon Data Dashboard</h3>
-                            <p class="text-white/70 mb-4">A high-density data dashboard rebuilt with pure glassmorphism for enhanced data readability and a futuristic look.</p>
-                            <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right ml-2"><path d="M8 12h16"/><path d="m18 18 6-6-6-6"/></svg>
-                            </a>
-                        </div>
+            <section id="services" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <h2>What I Offer</h2>
+                        <div class="line"></div>
                     </div>
 
-                    <!-- Project 2 (Rounded-3xl) -->
-                    <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
-                        <!-- Placeholder Image/Card Top -->
-                        <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            Fluid E-commerce Store Mockup
+                    <div class="services-grid">
+                        <div class="service-card glass reveal">
+                            <div class="icon-box"><i
+                                    class="fas fa-code"></i></div>
+                            <h3>Frontend Development</h3>
+                            <p>Crafting responsive, interactive, and accessible
+                                user interfaces using React and modern CSS.</p>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-semibold mb-2 text-white">Fluid E-commerce Store</h3>
-                            <p class="text-white/70 mb-4">An innovative e-commerce experience featuring fluid transitions and adaptive layouts for mobile-first shoppers.</p>
-                            <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right ml-2"><path d="M8 12h16"/><path d="m18 18 6-6-6-6"/></svg>
-                            </a>
+                        <div class="service-card glass reveal delay-1">
+                            <div class="icon-box"><i
+                                    class="fas fa-server"></i></div>
+                            <h3>Backend Development</h3>
+                            <p>Building robust APIs, database architectures, and
+                                server-side logic for scalable applications.</p>
                         </div>
-                    </div>
-
-                    <!-- Project 3 (Rounded-3xl) -->
-                    <div class="glass-container rounded-3xl overflow-hidden group hover:shadow-2xl" style="box-shadow: 0 0 0 1px rgba(0, 245, 212, 0.4);">
-                        <!-- Placeholder Image/Card Top -->
-                        <div class="h-48 bg-gray-900/50 flex items-center justify-center text-xl font-bold text-white/80 border-b border-white/10 transition-colors duration-500 group-hover:bg-pink-600/30">
-                            Aurora SaaS Launch Page Mockup
+                        <div class="service-card glass reveal delay-2">
+                            <div class="icon-box"><i
+                                    class="fas fa-layer-group"></i></div>
+                            <h3>UI/UX Designing</h3>
+                            <p>Designing intuitive user journeys and
+                                high-fidelity wireframes that look
+                                impactful.</p>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-semibold mb-2 text-white">Aurora SaaS Launch Page</h3>
-                            <p class="text-white/70 mb-4">A high-conversion landing page utilizing subtle 3D effects and high-impact hero sections for product launch.</p>
-                            <a href="#" class="font-medium flex items-center transition-colors" style="color: var(--color-primary); hover:color: var(--color-secondary);">
-                                View Project
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right ml-2"><path d="M8 12h16"/><path d="m18 18 6-6-6-6"/></svg>
-                            </a>
+                        <div class="service-card glass reveal">
+                            <div class="icon-box"><i
+                                    class="fas fa-palette"></i></div>
+                            <h3>Graphics Designing</h3>
+                            <p>Creating visual brand identities, logos, and
+                                marketing assets using Adobe Creative Suite.</p>
+                        </div>
+                        <div class="service-card glass reveal delay-1">
+                            <div class="icon-box"><i
+                                    class="fas fa-mobile-alt"></i></div>
+                            <h3>App Development</h3>
+                            <p>Developing cross-platform mobile applications for
+                                iOS and Android using Flutter/React Native.</p>
+                        </div>
+                        <div class="service-card glass reveal delay-2">
+                            <div class="icon-box"><i
+                                    class="fas fa-pen-nib"></i></div>
+                            <h3>Content Writing</h3>
+                            <p>Writing technical blogs, SEO-optimized copy, and
+                                documentation that engages readers.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-<!-- 5. Testimonials (Auto Revolving/Sliding) Section -->
-        <section id="testimonials" class="py-20 p-6">
-            <div class="max-w-4xl mx-auto fade-in-up">
-                <h2 class="text-5xl font-bold text-center text-white mb-16">What Clients <span style="color: var(--color-primary);">Say</span></h2>
+            <section id="work" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <h2>Recent Projects</h2>
+                        <div class="line"></div>
+                    </div>
 
-                <div class="relative h-72 sm:h-80 overflow-hidden">
-                    <div id="testimonial-slider" class="absolute inset-0 flex items-center justify-center transition-opacity duration-300">
-                        <!-- Content injected by JavaScript -->
+                    <div class="work-grid">
+                        <div class="work-card reveal" onclick="openModal('p1')">
+                            <div class="work-img">
+                                <img src="/assets/clothing-store.png"
+                                    alt="Ecommerce">
+                            </div>
+                            <div class="work-content glass">
+                                <h3>Clothing Store</h3>
+                                <span class="arrow"><i
+                                        class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="work-card reveal delay-1"
+                            onclick="openModal('p2')">
+                            <div class="work-img">
+                                <img src="/assets/club.png" alt="Dashboard">
+                            </div>
+                            <div class="work-content glass">
+                                <h3>Academic Club Dashboard</h3>
+                                <span class="arrow"><i
+                                        class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="work-card reveal delay-2"
+                            onclick="openModal('p3')">
+                            <div class="work-img">
+                                <img
+                                    src="/assets/qwickattend.png"
+                                    alt="App">
+                            </div>
+                            <div class="work-content glass">
+                                <h3>QR Attendance System</h3>
+                                <span class="arrow"><i
+                                        class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <!-- 
+                        
+                        <div class="work-card reveal" onclick="openModal('p4')">
+                            <div class="work-img">
+                                <img
+                                    src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80"
+                                    alt="Social">
+                            </div>
+                            <div class="work-content glass">
+                                <h3>Social Connect</h3>
+                                <p>MERN Stack</p>
+                                <span class="arrow"><i
+                                        class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="work-card reveal delay-1"
+                            onclick="openModal('p5')">
+                            <div class="work-img">
+                                <img
+                                    src="https://images.unsplash.com/photo-1626785774573-4b7993125486?w=600&q=80"
+                                    alt="Graphics">
+                            </div>
+                            <div class="work-content glass">
+                                <h3>Brand Identity</h3>
+                                <p>Illustrator • PS</p>
+                                <span class="arrow"><i
+                                        class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="work-card reveal delay-2"
+                            onclick="openModal('p6')">
+                            <div class="work-img">
+                                <img
+                                    src="https://images.unsplash.com/photo-1499750310159-5254f4cc157e?w=600&q=80"
+                                    alt="Blog">
+                            </div>
+                            <div class="work-content glass">
+                                <h3>Tech Blog</h3>
+                                <p>Next.js • CMS</p>
+                                <span class="arrow"><i
+                                        class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        
+                        -->
                     </div>
                 </div>
+            </section>
 
-                <div class="flex justify-center mt-10 space-x-5">
-                    <!-- Buttons with Rounded-3xl and Neon Accent -->
-                    <button id="prev-btn" class="p-4 glass-container rounded-3xl hover:bg-white/30 transition-all duration-300" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <button id="next-btn" class="p-4 glass-container rounded-3xl hover:bg-white/30 transition-all duration-300" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Contact Section -->
-        <section id="contact" class="py-20 p-6">
-            <div class="max-w-3xl mx-auto fade-in-up">
-                <h2 class="text-5xl font-bold text-center text-white mb-16">Ready to <span style="color: var(--color-primary);">Start?</span></h2>
-
-                <!-- Form with Rounded-3xl and Enhanced Glassmorphism -->
-                <form class="glass-container p-8 sm:p-12 rounded-3xl space-y-8">
-                    <div>
-                        <label for="name" class="block text-white/90 mb-3 text-lg">Name</label>
-                        <!-- Form fields retain some rounding for usability/style -->
-                        <input type="text" id="name" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="Your Full Name">
+            <section id="testimonials" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <h2>What Clients Say</h2>
+                        <div class="line"></div>
                     </div>
-                    <div>
-                        <label for="email" class="block text-white/90 mb-3 text-lg">Email</label>
-                        <input type="email" id="email" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="your@email.com">
+                    <div class="testimonials-grid">
+                        <div class="testi-card glass reveal">
+                            <div class="quote-icon"><i
+                                    class="fas fa-quote-left"></i></div>
+                            <p
+                                class="review-text">"Bhupesh transformed our vague vision into a stunning, high-performance website. His attention to detail is unmatched and the speed is incredible."</p>
+                            <div class="client-info">
+                                <img
+                                    src="assets/client1.jpg"
+                                    alt="Client">
+                                <div><h4>Arjun Pant</h4><span>Managing Director</span></div>
+                            </div>
+                        </div>
+                        <div class="testi-card glass reveal delay-1">
+                            <div class="quote-icon"><i
+                                    class="fas fa-quote-left"></i></div>
+                            <p
+                                class="review-text">"Professional, timely, and incredibly talented. The simple, clean design he implemented gave our brand a perfect modern mobile look."</p>
+                            <div class="client-info">
+                                <img
+                                    src="assets/client2.jpg"
+                                    alt="Client">
+                                 <div><h4>Sanjay Thapa</h4><span>Marketing Head, MnrDeals</span></div>
+                            </div>
+                        </div>
+                        <div class="testi-card glass reveal delay-2">
+                            <div class="quote-icon"><i
+                                    class="fas fa-quote-left"></i></div>
+                            <p
+                                class="review-text">"I hired him for a quick UI fix, but his insights on UX were so valuable that we redesigned our entire app."</p>
+                            <div class="client-info">
+                                <img
+                                    src="assets/client3.jpg"
+                                    alt="Client">
+                               <div><h4>Raysum Giri</h4><span>Founder, Aglo Yatri</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <label for="message" class="block text-white/90 mb-3 text-lg">Message</label>
-                        <textarea id="message" rows="6" class="w-full p-4 rounded-xl glass-container border-none focus:ring-2 focus:ring-pink-400 focus:outline-none placeholder-white/50 bg-white/5" placeholder="Tell me about your project, vision, and timeline..."></textarea>
                 </div>
-                    <!-- Submit Button with Neon Primary Color (Retains rounded-3xl for style) -->
-                    <button type="submit" class="glass-btn w-full py-4 px-6 text-xl font-semibold rounded-3xl transition-all duration-500 text-black" style="background-color: var(--color-primary); box-shadow: 0 0 15px var(--color-primary);">
-                        Send Message
-                    </button>
-                </form>
-            </div>
-        </section>
+            </section>
 
-        <!-- 7. Footer Section (Retains rounded-t-3xl for separation) -->
-        <footer class="glass-container mt-20 p-10 rounded-t-3xl border-t border-white/10">
-            <div class="max-w-7xl mx-auto text-center">
-                <div class="flex justify-center space-x-8 mb-6">
-                    <!-- Social Icons with Primary Color -->
-                    <a href="#" class="hover:text-white transition-colors" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                    <a href="#" class="hover:text-white transition-colors" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2 1.2-1.1 1.9-2.7 1.7-4.4-1.2 0-2.5-.4-3.6-1.3-1.4-1.2-2.3-3.1-2.2-5.1.7-.1 1.4-.1 2.1-.2-.5-.5-1-1.1-1.4-1.8-.7-1.3-1.1-2.8-1.2-4.3.4.1.8.2 1.3.2.7-.4 1.3-.9 1.8-1.5.5-.6.9-1.3 1.2-2.1.2-.5.3-1 .3-1.5 0-1.6-1.1-2.9-2.6-3.3 1.2.6 2.3 1.4 3.3 2.5.5.6.8 1.4 1 2.2.3.2.5.4.7.7.7.6 1.1 1.4 1.2 2.3 0 0 0 .1 0 .2.4.2.8.4 1.1.7.9.8 1.4 1.8 1.4 2.9 0 .5-.1 1-.2 1.5.4.1.8.2 1.2.2.6-.4 1.1-.9 1.5-1.5.8-1 1.3-2.1 1.5-3.3.4 1.3.7 2.6.7 4 0 .7-.1 1.4-.2 2-.1.5-.3 1-.5 1.5z"/></svg>
-                    </a>
-                    <a href="#" class="hover:text-white transition-colors" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22.31c-3.79 0-7.3-2.2-9.69-5.75-2.03-3.03-3.13-6.52-3.12-10.22 0-2.1 0-4 1.5-5.5 1.5-1.5 3.4-1.5 5.5-1.5 2.1 0 4 0 5.5 1.5 1.5 1.5 1.5 3.4 1.5 5.5 0 3.7-.6 7.2-3.1 10.2-2.3 3.5-5.9 5.7-9.7 5.7-3.8 0-7.3-2.2-9.7-5.7.4-.7 1.1-1.1 1.9-1.3 2.5-1.1 5.3-1.7 8.2-1.7 2.9 0 5.7.6 8.2 1.7 1.4.3 2.5.9 3.4 1.8.3.3.5.7.7 1.1.1.2.1.4.1.6 0 .8-.5 1.4-1.3 1.5-1.4.1-2.8.2-4.2.2z"/></svg>
-                    </a>
+            <section id="contact" class="section">
+                <div class="container">
+                    <div class="contact-box glass reveal" style="border: none;">
+                        <div class="contact-left">
+                            <h2>Let's start a project</h2>
+                            <p>Open for freelance opportunities and
+                                collaborations.</p>
+                            <div class="contact-info">
+                                <div class="item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span><a
+                                            href="mailto:hello@bbhatt.com.np">hello@bbhatt.com.np</a></span>
+                                </div>
+                                <div class="item">
+                                    <i class="fas fa-phone"></i><span><a href="tel:+9779761184935">+977 9761184935</a></span>
+                                </div>
+                                <div class="item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span><a href="#">Kanchanpur, Nepal</a></span>
+                                </div>
+                            </div>
+                            <div class="socials">
+                                <a href="https://github.com/bbhatt-git"
+                                    style="text-decoration: none"><i
+                                        class="fab fa-github"></i></a>
+                                <a
+                                    href="https://www.facebook.com/share/1BnJr4X2Ec/"
+                                    style="text-decoration: none"><i
+                                        class="fab fa-facebook"></i></a>
+                                <a
+                                    href="https://www.linkedin.com/in/bhattbhupesh"
+                                    style="text-decoration: none"><i
+                                        class="fab fa-linkedin"></i></a>
+                                <a
+                                    href="https://www.instagram.com/_bbhatt?igsh=MWdjZnc3Y2t6bXp1bA=="
+                                    style="text-decoration: none"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <form name="contact-form" class="contact-form"
+                            id="contactForm">
+                            <div class="input-group">
+                                <input name="Name" id="Name" class="Name"
+                                    type="text" required placeholder=" ">
+                                <label>Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input name="Email" id="Email" class="Email"
+                                    type="email" required placeholder=" ">
+                                <label>Email</label>
+                            </div>
+                            <div class="input-group">
+                                <textarea name="Message" id="Message"
+                                    class="Message" rows="4" required
+                                    placeholder=" "></textarea>
+                                <label>Message</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send
+                                Message</button>
+                        </form>
+                    </div>
                 </div>
-                <p class="text-sm text-white/50">
-                    &copy; <span id="current-year"></span> Bhupesh Raj Bhatt. Crafted with passion, code, and high transparency.
-                </p>
+            </section>
+        </main>
+
+        <footer id="footer">
+            <div class="container footer-desktop">
+                <div class="footer-grid">
+                    <div class="footer-col brand-col">
+                        <a href="#"
+                            class="footer-logo logo-gradient">bbhatt.com.np</a>
+                        <p class="footer-desc">Turning ideas into real-world
+                            solutions. Dedicated to building clean, accessible,
+                            and high-performance web applications.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="#services">Frontend
+                                    Development</a></li>
+                            <li><a href="#services">Backend Development</a></li>
+                            <li><a href="#services">UI/UX Designing</a></li>
+                            <li><a href="#services">App Development</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col contact-col">
+                        <h4>Contact</h4>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-envelope"></i> <span><a
+                                        href="mailto:hello@bbhatt.com.np">hello@bbhatt.com.np</a></span></li>
+                            <li><i class="fas fa-phone"></i> <span><a
+                                        href="tel:+9779761184935">+977
+                                        9761184935</a></span></li>
+                            <li><i class="fas fa-map-marker-alt"></i>
+                                <span><a href="#">Kanchanpur,
+                                        Nepal</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; <span id="year"></span> bbhatt.com.np. All rights
+                        reserved.</p>
+                    <div class="footer-socials">
+                        <a href="https://github.com/bbhatt-git"
+                            style="text-decoration: none"><i
+                                class="fab fa-github"></i></a>
+                        <a
+                            href="https://www.facebook.com/share/1BnJr4X2Ec/"
+                            style="text-decoration: none"><i
+                                class="fab fa-facebook"></i></a>
+                        <a
+                            href="https://www.linkedin.com/in/bhattbhupesh"
+                            style="text-decoration: none"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a
+                            href="https://www.instagram.com/_bbhatt?igsh=MWdjZnc3Y2t6bXp1bA=="
+                            style="text-decoration: none"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
         </footer>
 
-    <!-- Link to external JavaScript file -->
-    <script src="script.js"></script>
-</body>
+        <button id="backToTop" class="back-to-top" aria-label="Back to Top"><i
+                class="fas fa-arrow-up"></i></button>
+
+        <div id="modal" class="modal-overlay">
+            <div class="modal-content glass">
+                <button class="close-modal">&times;</button>
+                <h2 id="m-title">Title</h2>
+                <p class="m-subtitle" id="m-stack">Stack</p>
+                <div class="m-body">
+                    <p id="m-desc">Description</p>
+                </div>
+                <div class="m-footer">
+                    <a id="m-live-demo" href="#" class="btn btn-primary">Live
+                        Demo</a>
+                    <a id="m-code" href="#" class="btn btn-secondary">Code</a>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script src="content-protection.js"></script>
+    </body>
 </html>

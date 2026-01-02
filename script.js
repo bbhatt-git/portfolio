@@ -1,178 +1,237 @@
-// --- DATA ---
-const roles = ["Fullstack Developer", "UI Designer", "Graphics Designer", "Problem Solver", "Innovator"];
-const testimonials = [
-    { quote: "Bhupesh transformed our sluggish legacy platform into a rapid, responsive interface. His attention to performance optimization while building the custom components was exceptional. The user adoption rates doubled within the first month.", name: "Dr. Anya Sharma", company: "CTO, Meridian Financial" },
-    { quote: "We came with a vague concept, and he turned it into a polished, high-conversion landing page. The process was transparent, and the final product looked incredible on every device. Our lead generation spiked by 40%.", name: "David 'Buzz' Williams", company: "Marketing Director, AuraStream" },
-    { quote: "The speed at which he integrated complex APIs into a seamless front-end was astounding. He’s not just a coder; he's a strategic partner who anticipates problems before they arise. A phenomenal experience.", name: "Chloe Dupont", company: "Project Lead, Quantum Labs" },
-    { quote: "Bhupesh's UI design is genuinely unique. It’s elegant, modern, and intuitively guides the user. The dashboard he built for us receives constant praise for its clarity and aesthetic appeal.", name: "Marcus Klein", company: "Product Manager, Edge Analytics" },
-    { quote: "We were worried about scaling, but his clean, modular React architecture made future development painless. It was the most future-proof code base we've ever launched with. Highly professional and reliable.", name: "Jamal Adebayo", company: "Founder, ByteWave" },
-];
-
-// --- DOM ELEMENTS & INITIALIZATION ---
-// Testimonial Slider Elements
-const testimonialSlider = document.getElementById('testimonial-slider');
-const nextBtn = document.getElementById('next-btn');
-const prevBtn = document.getElementById('prev-btn');
-let currentTestimonialIndex = 0; // State for the slider
-
-// General Elements
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const closeMenuBtn = document.getElementById('close-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-const typingTextElement = document.getElementById('typing-text');
-const currentYearEl = document.getElementById('current-year');
-const nav = document.getElementById('navbar');
-
-
-// --- FUNCTIONS ---
-
-// 1. Mobile Menu Logic
-const toggleMobileMenu = () => {
-    mobileMenu.classList.toggle('hidden');
-};
-
-
-// 2. Auto Typing Effect Logic
-let roleIndex = 0;
-let charIndex = 0;
-const typingSpeed = 70;
-const erasingSpeed = 40;
-const delayBeforeTyping = 1800;
-const delayBeforeErasing = 1500;
-
-function type() {
-    // Check if element exists before accessing its properties
-    if (!typingTextElement) return;
-
-    const currentRole = roles[roleIndex];
-    if (charIndex < currentRole.length) {
-        typingTextElement.textContent += currentRole.charAt(charIndex);
-        charIndex++;
-        setTimeout(type, typingSpeed);
-    } else {
-        setTimeout(erase, delayBeforeErasing);
-    }
-}
-
-function erase() {
-    if (!typingTextElement) return;
-
-    const currentRole = roles[roleIndex];
-    if (charIndex > 0) {
-        typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(erase, erasingSpeed);
-    } else {
-        roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(type, 800);
-    }
-}
-
-// 3. Testimonial Slider Rendering Logic (REINTRODUCED)
-function renderTestimonialSlider() {
-    if (!testimonialSlider) return;
-
-    const t = testimonials[currentTestimonialIndex];
-    const htmlContent = `
-        <div class="glass-container p-8 sm:p-10 rounded-3xl w-full mx-auto flex flex-col justify-between h-full">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote mb-5" style="color: var(--color-secondary);"><path d="M3 21h3c3.8-2 6-5 6-9V3H3v7c0 4-2.2 7-6 9z"/><path d="M12 21h3c3.8-2 6-5 6-9V3h-9v7c0 4-2.2 7-6 9z"/></svg>
-                <p class="text-xl italic text-white/90 mb-6 font-light">"${t.quote}"</p>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/10">
-                <p class="font-bold text-lg" style="color: var(--color-primary);">${t.name}</p>
-                <p class="text-white/60 text-sm">${t.company}</p>
-            </div>
-        </div>
-    `;
-
-    // Simple fade transition
-    testimonialSlider.style.opacity = '0';
-    setTimeout(() => {
-        testimonialSlider.innerHTML = htmlContent;
-        testimonialSlider.style.opacity = '1';
-    }, 150);
-}
-
-// 4. Testimonial Navigation Logic (REINTRODUCED)
-function navigateTestimonials(direction) {
-    currentTestimonialIndex = (currentTestimonialIndex + direction + testimonials.length) % testimonials.length;
-    renderTestimonialSlider();
-}
-
-
-// 5. Scroll and Visibility Animations (Intersection Observer)
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            if (entry.target.id !== 'home') {
-                observer.unobserve(entry.target);
-            }
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-});
-
-// 6. Navbar Sticky Shrink/Glass Effect
-const handleScroll = () => {
-    if (nav) {
-        if (window.scrollY > 80) {
-            // Deeper background color when scrolled to maintain glass effect
-            nav.style.backgroundColor = 'rgba(13, 0, 26, 0.9)';
-            nav.classList.add('py-2');
-            nav.classList.remove('p-4');
-        } else {
-            // Base glass-container color from CSS
-            nav.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-            nav.classList.remove('py-2');
-            nav.classList.add('p-4');
-        }
-    }
-};
-
-
-// --- EVENT LISTENERS & INITIAL SETUP (Runs when DOM is fully loaded) ---
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Set the current year in the footer
-    if (currentYearEl) {
-        currentYearEl.textContent = new Date().getFullYear();
+    const themeBtn = document.getElementById('theme-btn');
+    const body = document.body;
+    const icon = themeBtn.querySelector('i');
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
     }
 
-    // Menu Listeners
-    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', toggleMobileMenu); // Close menu on link click
+    themeBtn.addEventListener('click', () => {
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            icon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            icon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'dark');
+        }
     });
 
-    // Slider Navigation Listeners
-    if (nextBtn) nextBtn.addEventListener('click', () => navigateTestimonials(1));
-    if (prevBtn) prevBtn.addEventListener('click', () => navigateTestimonials(-1));
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-    // Start Typing Effect
-    if (typingTextElement) {
-        setTimeout(type, delayBeforeTyping);
+    const navbar = document.querySelector('.navbar');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    if (!isMobile) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
     }
 
-    // Initial Testimonial Render
-    renderTestimonialSlider();
+    if (!isMobile) {
+        const magneticElements = document.querySelectorAll('.btn, .socials a, .footer-socials a, #theme-btn');
 
-    // Scroll Animations
-    document.querySelectorAll('section > div').forEach(el => {
-        el.classList.add('fade-in-up');
-        observer.observe(el);
+        magneticElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const pull = el.classList.contains('btn') ? 0.2 : 0.4;
+
+                el.style.transform = `translate(${x * pull}px, ${y * pull}px)`;
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.transition = 'transform 0.3s ease';
+                el.style.transform = `translate(0, 0)`;
+
+                el.addEventListener('transitionend', function handler() {
+                    el.style.transition = '';
+                    el.removeEventListener('transitionend', handler);
+                });
+            });
+        });
+
+    }
+
+    const modal = document.getElementById('modal');
+    const closeModal = document.querySelector('.close-modal');
+    const mTitle = document.getElementById('m-title');
+    const mStack = document.getElementById('m-stack');
+    const mDesc = document.getElementById('m-desc');
+    const mLiveDemo = document.getElementById('m-live-demo');
+    const mCode = document.getElementById('m-code');
+
+
+    const projectData = {
+        'p1': {
+            title: 'Clothing Store',
+            stack: 'React • Next.js • Tailwind CSS • Firebase • ShadCN UI',
+            desc: 'A performant, server-rendered e-commerce platform built on a modern tech stack: Next.js for the frontend, Firebase (Firestore and Auth) for the backend, and styled with Tailwind CSS.',
+            liveUrl: 'https://clothing-store-xq4v.onrender.com/',
+            codeUrl: 'https://github.com/bbhatt-git/clothing-store'
+        },
+        'p2': {
+            title: 'Academic Club Dashboard',
+            stack: 'React • Next.js • Tailwind CSS • Firebase',
+            desc: 'A web application for managing academic clubs, featuring event scheduling, member management, and resource sharing with a user-friendly interface. Built with React and Next.js for optimal performance.',
+            liveUrl: 'https://sarc-club.vercel.app/',
+            codeUrl: 'https://github.com/bbhatt-git/studio/'
+        },
+        'p3': {
+            title: 'QR Attendance System',
+            stack: 'React • Next.js • Tailwind CSS • GenkitAI API • Firebase',
+            desc: 'A web application for managing student attendance. The app uses QR to identify a student with thier uniquely generated Student ID, and features other essential options like admin logins, student data feeding, csv exports, qr generation, and much more.',
+            liveUrl: 'https://qwickattend.vercel.app',
+            codeUrl: 'https://github.com/bbhatt-git/qwickattend/'
+        },
+        'p4': {
+            title: 'Social Connect',
+            stack: 'MERN Stack • Socket.io',
+            desc: 'A real-time social media application featuring live chat, post sharing, likes, comments, and user authentication.'
+        },
+        'p5': {
+            title: 'Brand Identity Design',
+            stack: 'Adobe Illustrator • Photoshop',
+            desc: 'Complete brand overhaul for a local restaurant, including logo design, menu layout, and social media marketing assets.'
+        },
+        'p6': {
+            title: 'Technical Tech Blog',
+            stack: 'Next.js • Sanity CMS',
+            desc: 'A high-performance blog optimized for SEO, featuring markdown support, dark mode, and newsletter subscription.'
+        }
+    };
+
+    window.openModal = function (id) {
+        if (projectData[id]) {
+            const project = projectData[id];
+
+            mTitle.innerText = project.title;
+            mStack.innerText = project.stack;
+            mDesc.innerText = project.desc;
+
+            
+            if (mLiveDemo) mLiveDemo.href = project.liveUrl || '#';
+            if (mCode) mCode.href = project.codeUrl || '#';
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
     });
 
-    // Lucide Icon Replacement
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-        lucide.createIcons();
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
+    
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyba49ZLsyk5C2e8zKBevq3k_DbCBPUK_ebgbHEQIy_l2TG_rFVqniBB9TQ4aebxnw5/exec'
+    const form = document.forms['contact-form']
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+    })
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button');
+            const originalText = btn.innerText;
+            const data = new FormData(e.target);
+
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+            btn.style.background = '#3b82f6';
+
+            fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        btn.innerText = 'Sent!';
+                        btn.style.background = '#22c55e';
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Form submission failed.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    btn.innerText = 'Failed!';
+                    btn.style.background = '#ef4444';
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }, 3000);
+                })
+                .finally(() => {
+                    if (btn.innerText === 'Sent!') {
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.style.background = '';
+                            btn.disabled = false;
+                        }, 3000);
+                    }
+                });
+        });
+    }
+
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 });
-
-// Navbar Scroll Listener (runs immediately)
-window.addEventListener('scroll', handleScroll);
